@@ -1,0 +1,11 @@
+---
+- name: modify fstab
+  hosts: all
+  tasks:
+    - name: fstab
+      lineinfile:
+        path: /etc/fstab
+        line: /dev/sr1  /mnt  iso9660 defaults 0 0 
+    - name: mount
+      command: mount -a      
+      

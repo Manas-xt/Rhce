@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ultimate Amazing Website</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif}
+html{scroll-behavior:smooth}
+body{
+    background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+    color:white;
+    overflow-x:hidden;
+}
+
+/* Scroll Progress */
+#progressBar{
+    position:fixed;
+    top:0;
+    left:0;
+    height:5px;
+    background:linear-gradient(90deg,#00f5ff,#ff00c8);
+    width:0%;
+    z-index:9999;
+}
+
+/* Header */
+header{
+    position:fixed;
+    width:100%;
+    padding:20px 10%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter:blur(10px);
+    background:rgba(0,0,0,0.3);
+    z-index:1000;
+}
+header h1{font-weight:800;letter-spacing:2px}
+nav a{
+    color:white;
+    text-decoration:none;
+    margin-left:25px;
+    transition:.3s;
+}
+nav a:hover{color:#00f5ff}
+
+/* Hero */
+.hero{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:0 20px;
+}
+.hero h2{
+    font-size:60px;
+    background:linear-gradient(90deg,#00f5ff,#ff00c8);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+}
+.hero p{margin-top:20px;opacity:.8}
+.hero button{
+    margin-top:30px;
+    padding:15px 35px;
+    border:none;
+    border-radius:30px;
+    background:linear-gradient(90deg,#00f5ff,#ff00c8);
+    color:white;
+    cursor:pointer;
+    transition:.4s;
+}
+.hero button:hover{
+    transform:scale(1.1);
+    box-shadow:0 0 25px #00f5ff;
+}
+
+/* Sections */
+section{padding:100px 10%}
+h2.section-title{text-align:center;margin-bottom:60px;font-size:40px}
+
+/* About */
+.about{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+.about img{width:100%;border-radius:20px}
+.about p{line-height:1.6;opacity:.8}
+
+/* Services */
+.services{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:30px}
+.service{
+    background:rgba(255,255,255,.05);
+    padding:40px;
+    border-radius:20px;
+    transition:.4s;
+}
+.service:hover{transform:translateY(-10px);background:rgba(255,255,255,.1)}
+
+/* Counters */
+.counters{display:flex;justify-content:space-around;text-align:center}
+.counter h3{font-size:50px;color:#00f5ff}
+
+/* Portfolio */
+.portfolio{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:20px}
+.portfolio img{width:100%;border-radius:15px;transition:.4s}
+.portfolio img:hover{transform:scale(1.05)}
+
+/* Testimonials */
+.testimonial{
+    background:rgba(255,255,255,.05);
+    padding:30px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+/* FAQ */
+.faq-item{margin-bottom:15px}
+.faq-question{
+    cursor:pointer;
+    padding:15px;
+    background:rgba(255,255,255,.05);
+    border-radius:10px;
+}
+.faq-answer{
+    display:none;
+    padding:15px;
+    opacity:.8;
+}
+
+/* Contact */
+.contact input,.contact textarea{
+    width:100%;
+    padding:15px;
+    margin:10px 0;
+    border-radius:10px;
+    border:none;
+}
+.contact button{
+    padding:12px 30px;
+    border:none;
+    border-radius:25px;
+    background:#00f5ff;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:30px;
+    background:rgba(0,0,0,.4);
+    font-size:14px;
+}
+
+/* Back To Top */
+#topBtn{
+    position:fixed;
+    bottom:30px;
+    right:30px;
+    padding:12px 18px;
+    border:none;
+    border-radius:50%;
+    background:#ff00c8;
+    color:white;
+    cursor:pointer;
+    display:none;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .about{grid-template-columns:1fr}
+    .hero h2{font-size:40px}
+}
+</style>
+</head>
+<body>
+
+<div id="progressBar"></div>
+
+<header>
+<h1>AMAZING</h1>
+<nav>
+<a href="#">Home</a>
+<a href="#about">About</a>
+<a href="#services">Services</a>
+<a href="#portfolio">Portfolio</a>
+<a href="#contact">Contact</a>
+</nav>
+</header>
+
+<section class="hero">
+<h2>Create The Future</h2>
+<p>Modern design. Powerful animations. Incredible performance.</p>
+<button onclick="document.getElementById('about').scrollIntoView()">Explore</button>
+</section>
+
+<section id="about">
+<h2 class="section-title">About Us</h2>
+<div class="about">
+<img src="https://picsum.photos/500/400" alt="">
+<p>We build stunning digital experiences using modern web technologies. Our mission is to design websites that are fast, beautiful, and highly engaging.</p>
+</div>
+</section>
+
+<section>
+<div class="counters">
+<div class="counter"><h3 data-target="250">0</h3><p>Projects</p></div>
+<div class="counter"><h3 data-target="120">0</h3><p>Clients</p></div>
+<div class="counter"><h3 data-target="10">0</h3><p>Years Experience</p></div>
+</div>
+</section>
+
+<section id="services">
+<h2 class="section-title">Services</h2>
+<div class="services">
+<div class="service"><h3>Web Design</h3><p>Creative UI/UX design solutions.</p></div>
+<div class="service"><h3>Development</h3><p>Modern and scalable websites.</p></div>
+<div class="service"><h3>Branding</h3><p>Unique brand identity creation.</p></div>
+</div>
+</section>
+
+<section id="portfolio">
+<h2 class="section-title">Portfolio</h2>
+<div class="portfolio">
+<img src="https://picsum.photos/300/300?1">
+<img src="https://picsum.photos/300/300?2">
+<img src="https://picsum.photos/300/300?3">
+<img src="https://picsum.photos/300/300?4">
+</div>
+</section>
+
+<section>
+<h2 class="section-title">Testimonials</h2>
+<div class="testimonial">"Absolutely amazing service and design!"</div>
+<div class="testimonial">"Professional team with incredible creativity."</div>
+</section>
+
+<section>
+<h2 class="section-title">FAQ</h2>
+<div class="faq-item">
+<div class="faq-question">How long does a project take?</div>
+<div class="faq-answer">Usually between 2-6 weeks depending on complexity.</div>
+</div>
+<div class="faq-item">
+<div class="faq-question">Do you offer support?</div>
+<div class="faq-answer">Yes! We provide full support after launch.</div>
+</div>
+</section>
+
+<section id="contact" class="contact">
+<h2 class="section-title">Contact Us</h2>
+<input type="text" placeholder="Your Name">
+<input type="email" placeholder="Your Email">
+<textarea rows="5" placeholder="Your Message"></textarea>
+<button>Send Message</button>
+</section>
+
+<footer>
+© 2026 Amazing Website | Designed with ❤️
+</footer>
+
+<button id="topBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
+
+<script>
+// Scroll Progress
+window.onscroll=function(){
+let winScroll=document.body.scrollTop||document.documentElement.scrollTop;
+let height=document.documentElement.scrollHeight-document.documentElement.clientHeight;
+document.getElementById("progressBar").style.width=(winScroll/height)*100+"%";
+document.getElementById("topBtn").style.display=winScroll>300?"block":"none";
+}
+
+// Counter Animation
+const counters=document.querySelectorAll(".counter h3");
+counters.forEach(counter=>{
+counter.innerText="0";
+const update=()=>{
+const target=+counter.getAttribute("data-target");
+const c=+counter.innerText;
+const inc=target/100;
+if(c<target){
+counter.innerText=Math.ceil(c+inc);
+setTimeout(update,20);
+}else{
+counter.innerText=target;
+}
+};
+update();
+});
+
+// FAQ Toggle
+document.querySelectorAll(".faq-question").forEach(q=>{
+q.addEventListener("click",()=>{
+let ans=q.nextElementSibling;
+ans.style.display=ans.style.display==="block"?"none":"block";
+});
+});
+</script>
+
+</body>
+</html>

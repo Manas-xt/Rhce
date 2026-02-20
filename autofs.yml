@@ -1,0 +1,65 @@
+---
+
+ - name: configure autofs
+
+   hosts: worker2
+
+   tasks:
+
+           - name: install autofs nfs
+
+             yum:
+
+                   name:
+
+                         - autofs
+
+                         - nfs-utils
+
+                   state: present
+
+           - name: manage service
+
+             service:
+
+                   name: autofs
+
+                   state: started
+
+                   enabled: yes
+
+           - name: create mount point
+
+             file:
+
+                   path: /mount_point
+
+                   state: directory
+
+           - name: create custom conf file
+
+             lineinfile:
+
+                   path: /etc/auto.master.d/rcat.autofs
+
+                   line: /- /etc/auto.misc
+
+                   create: yes
+
+           - name: modify auto.misc
+
+             lineinfile:
+
+                   path: /etc/auto.misc
+
+                   line: /mount_point -rw,soft,intr 192.168.221.154:/nfs_share
+
+                   create: yes
+
+           - name: restart service
+
+             service:
+
+                   name: autofs
+
+                   state: restarted  

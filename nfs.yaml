@@ -1,0 +1,31 @@
+---
+- name: config nfs in worker 1
+  hosts: worker1
+  tasks: 
+    - name: install nfs 
+      yum:
+        name: nfs-utils
+        state: present
+    - name: manage service
+      service: 
+        name: nfs-server.service
+        state: started
+        enabled: yes
+    - name: add 2049/tcp on
+      firewalld: 
+        port: 2049/tcp
+        permanent: true
+        state: enabled
+        immediate: true
+    - name: create dir
+      file: 
+        path: /nfs_share
+        state: directory
+        mode: 0777
+    - name: modify config file
+      lineinfile: 
+        path: /etc/exports
+        line: /nfs_share  192.168.221.155  
+    - name: reload conf
+      shell: exportfs -rv      
+

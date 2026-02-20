@@ -1,0 +1,6 @@
+worker1
+worker2
+
+[prod]
+worker1
+worker2

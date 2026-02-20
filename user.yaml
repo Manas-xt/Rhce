@@ -1,0 +1,21 @@
+---
+- name: user creation
+  hosts: "{{ host }}"
+  vars_files: 
+   - ./uservar.yaml
+   - vault.yaml
+  tasks: 
+   - name: create a group asia
+     group: 
+      name: asia
+      state: present
+   - name: create a {{user1}}
+     user:
+      name: "{{user1}}" 
+      group: asia
+      password: "{{ password1 | password_hash('sha512') }}"
+   - name: create a {{ user2 }}
+     user:
+      name: "{{user2}}"
+      groups: asia
+      password: "{{ password2 | password_hash('sha512') }}"
