@@ -1,0 +1,9 @@
+---
+- name: print the details
+  hosts: all
+  tasks: 
+    - name: print
+      debug: 
+       msg: fqdn = {{ ansible_fqdn }} ,
+            processor info = {{ ansible_processor[1] }},
+            dns nameserver = {{ ansible_dns.nameservers}}
